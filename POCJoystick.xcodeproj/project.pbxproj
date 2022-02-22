@@ -15,6 +15,8 @@
 		BA45E34B27C55A93001D40F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA45E34927C55A93001D40F1 /* Main.storyboard */; };
 		BA45E34D27C55A94001D40F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA45E34C27C55A94001D40F1 /* Assets.xcassets */; };
 		BA45E35027C55A94001D40F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA45E34E27C55A94001D40F1 /* LaunchScreen.storyboard */; };
+		BA45E35727C55C45001D40F1 /* JoystickDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA45E35627C55C45001D40F1 /* JoystickDelegate.swift */; };
+		BA45E35927C55CB9001D40F1 /* JoystickController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA45E35827C55CB9001D40F1 /* JoystickController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		BA45E34A27C55A93001D40F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA45E34C27C55A94001D40F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA45E34F27C55A94001D40F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BA45E35627C55C45001D40F1 /* JoystickDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickDelegate.swift; sourceTree = "<group>"; };
+		BA45E35827C55CB9001D40F1 /* JoystickController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +66,13 @@
 				BA45E33F27C55A93001D40F1 /* AppDelegate.swift */,
 				BA45E34127C55A93001D40F1 /* GameScene.sks */,
 				BA45E34327C55A93001D40F1 /* Actions.sks */,
-				BA45E34527C55A93001D40F1 /* GameScene.swift */,
 				BA45E34727C55A93001D40F1 /* GameViewController.swift */,
 				BA45E34927C55A93001D40F1 /* Main.storyboard */,
 				BA45E34C27C55A94001D40F1 /* Assets.xcassets */,
 				BA45E34E27C55A94001D40F1 /* LaunchScreen.storyboard */,
+				BA45E35627C55C45001D40F1 /* JoystickDelegate.swift */,
+				BA45E34527C55A93001D40F1 /* GameScene.swift */,
+				BA45E35827C55CB9001D40F1 /* JoystickController.swift */,
 			);
 			path = POCJoystick;
 			sourceTree = "<group>";
@@ -144,8 +150,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA45E35727C55C45001D40F1 /* JoystickDelegate.swift in Sources */,
 				BA45E34627C55A93001D40F1 /* GameScene.swift in Sources */,
 				BA45E34827C55A93001D40F1 /* GameViewController.swift in Sources */,
+				BA45E35927C55CB9001D40F1 /* JoystickController.swift in Sources */,
 				BA45E34027C55A93001D40F1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
