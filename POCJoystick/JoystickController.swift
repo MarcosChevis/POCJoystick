@@ -77,10 +77,7 @@ class JoystickController {
     }
     
     func registerGameController(_ gameController: GCController) {
-        
-        // para mudar a cor do led do controle de PS4
-        // gameController.light?.color = GCColor(red: 0.5, green: 0.5, blue: 0.5)
-        
+                
         if let gamepad = gameController.extendedGamepad {
             self.gamePadLeft = gamepad.leftThumbstick
             self.gamePadRight = gamepad.rightThumbstick

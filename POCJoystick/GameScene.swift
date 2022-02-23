@@ -13,6 +13,7 @@ class GameScene: SKScene {
     
     private var circle: SKSpriteNode = SKSpriteNode(imageNamed: "alien.jpeg")
     private var initialPosition: CGPoint?
+    //multiplicador de força do joysick
     private var joystickMult: CGFloat = 1000
     private let cam = SKCameraNode()
     
@@ -20,6 +21,7 @@ class GameScene: SKScene {
     var lastActionTiem: TimeInterval = .zero
     let waitBorNextAction: Double = 1
     
+    //vetor que vai ser mudado e zerado todo update
     var forceVector: CGVector = .zero
     
     func setupScene() {
@@ -42,17 +44,25 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         self.addChild(circle)
+        //a camera da cena vira a que instanciei no comeco
         self.camera = cam
         self.setupScene()
     }
     
     override func update(_ currentTime: TimeInterval) {
         
+        //forças são aplicadas no objeto
         joystickController.update(currentTime)
         applyFriction()
         print(forceVector)
+        //aplica a força no corpo
         self.circle.physicsBody?.applyForce(forceVector)
+        //reseta o vetor de força
         forceVector = .zero
+    }
+    override func didSimulatePhysics() {
+        //atualiza a posiçao da camera quando termina de calcular a física
+        self.cam.position = self.circle.position
     }
     
     func applyFriction() {
@@ -92,45 +102,5 @@ extension GameScene: JoystickDelegate {
     func controllerDidDisconnect() {
         print("disconnected")
     }
-}
-
-extension CGVector {
-    
-    static func *(lhs: CGVector, rhs: CGFloat) -> CGVector {
-        
-        var vector: CGVector = .zero
-        
-        vector.dx = lhs.dx * rhs
-        vector.dy = lhs.dy * rhs
-        
-        return vector
-    }
-    
-    public static func +(lhs: CGVector, rhs: CGVector) -> CGVector {
-        return CGVector(dx: lhs.dx + rhs.dx, dy: lhs.dy + rhs.dy)
-    }
-    
-    public func magnitude() -> CGFloat {
-        if dx == CGFloat.zero && dy == CGFloat.zero {
-            return CGFloat.zero
-        }
-        return sqrt((pow(dx, 2) + pow(dy, 2)))
-    }
-    
-    public func normalized() -> CGVector {
-        let magnitude = self.magnitude()
-        guard magnitude > 0 else { return .zero }
-        var vector = CGVector.zero
-        vector.dx = self.dx / magnitude
-        vector.dy = self.dy / magnitude
-        
-        return vector
-    }
-    
-    public func getRadAngle() -> CGFloat {
-        return atan(dy/dx)
-    }
-    
-   
 }
 
