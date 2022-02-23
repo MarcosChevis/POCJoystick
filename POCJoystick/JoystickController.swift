@@ -32,17 +32,17 @@ class JoystickController {
             self, selector: #selector(self.handleControllerDidDisconnect),
             name: NSNotification.Name.GCControllerDidStopBeingCurrent, object: nil)
         
-            let virtualConfiguration = GCVirtualController.Configuration()
-            
-            // crie um array com os elementos que escolheu nas variáveis globais
-            virtualConfiguration.elements = [GCInputLeftThumbstick, GCInputRightThumbstick]
-            
-            virtualController = GCVirtualController(configuration: virtualConfiguration)
-            
-            // Connect to the virtual controller if no physical controllers are available.
-            if GCController.controllers().isEmpty {
-                virtualController?.connect()
-            }
+        let virtualConfiguration = GCVirtualController.Configuration()
+        
+        // crie um array com os elementos que escolheu nas variáveis globais
+        virtualConfiguration.elements = [GCInputLeftThumbstick, GCInputRightThumbstick]
+        
+        virtualController = GCVirtualController(configuration: virtualConfiguration)
+        
+        // Connect to the virtual controller if no physical controllers are available.
+        if GCController.controllers().isEmpty {
+            virtualController?.connect()
+        }
         
         guard let controller = GCController.controllers().first else {
             return
@@ -97,11 +97,21 @@ class JoystickController {
     }
     
     func updateRight(_ currentTime: TimeInterval) {
-        delegate?.rightJoystickUpdate(currentTime)
+        guard let gamePadRight = gamePadRight else {
+            return
+        }
+        let vector = CGVector(dx: CGFloat(gamePadRight.xAxis.value), dy: CGFloat(gamePadRight.yAxis.value))
+        
+        delegate?.rightJoystickUpdate(currentTime, direction: vector)
     }
     
     func updateLeft(_ currentTime: TimeInterval) {
-        delegate?.leftJoystickUpdate(currentTime)
+        guard let gamePadLeft = gamePadLeft else {
+            return
+        }
+        let vector = CGVector(dx: CGFloat(gamePadLeft.xAxis.value), dy: CGFloat(gamePadLeft.yAxis.value))
+        
+        delegate?.leftJoystickUpdate(currentTime, direction: vector)
     }
     
 }

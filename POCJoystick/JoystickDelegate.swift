@@ -9,8 +9,8 @@ import Foundation
 import GameController
 
 protocol JoystickDelegate: AnyObject {
-    func rightJoystickUpdate(_ currentTime: TimeInterval)
-    func leftJoystickUpdate(_ currentTime: TimeInterval)
+    func rightJoystickUpdate(_ currentTime: TimeInterval, direction: CGVector)
+    func leftJoystickUpdate(_ currentTime: TimeInterval, direction: CGVector)
     func controllerDidConnect(controller: GCController)
     func controllerDidDisconnect()
 }
