@@ -11,48 +11,14 @@ struct Room: Hashable {
     
     let possibleDirections: [Direction]
     
-    let index: Int
-    
-    init(index: Int, possibleDirections: [Direction]) {
-        self.index = index
+    init(possibleDirections: [Direction]) {
         self.possibleDirections = possibleDirections
     }
     
-    static func == (lhs: Room, rhs: Room) -> Bool {
-        return lhs.index == rhs.index
-    }
 }
 
-extension Room: CustomStringConvertible {
-    var description: String {
-        return "\(self.index)"
-    }
-    
-    
-}
-
-struct Exit {
-    var room: Room
-    var direction: Direction
-}
-
-extension Exit: CustomStringConvertible {
-    
-    var description: String {
-        var string = ""
-        switch direction {
-        case .top:
-            string = "↑"
-        case .bot:
-            string = "↓"
-        case .left:
-            string = "←"
-        case .right:
-            string = "→"
-        }
-        
-        return string + room.description
-    }
-    
-    
-}
+//extension Room: CustomStringConvertible {
+//    var description: String {
+//        return ""
+//    }
+//}

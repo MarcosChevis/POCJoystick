@@ -13,7 +13,6 @@ class GameScene: SKScene {
     let dungeonCreator: DungeonGenerator = .init()
     
     func setupScene() {
-        dungeonCreator.getMap(totalRooms: 10)
     }
     
     override func didMove(to view: SKView) {
@@ -24,7 +23,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        dungeonCreator.getMap(totalRooms: 10)
+        dungeonCreator.getMap(totalRooms: 50)
         
     }
 }
